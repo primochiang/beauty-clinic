@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: React + Vite beauty clinic website\n\n- Setup React 18 + Vite + TypeScript project\n- Configure Tailwind CSS with custom theme colors\n- Add React Router v6 for SPA navigation\n- Create layout components \\(Navbar, Footer, FloatingSidebar, MobileBottomBar\\)\n- Create home page components \\(HeroCarousel, TreatmentGrid, ArticlePreview, CasePreview\\)\n- Create UI components \\(FilterTabs, FAQ, PageHeader, CTASection\\)\n- Create 6 pages \\(Home, Treatments, Doctors, Articles, Cases, Contact\\)\n- Add static data files for doctors, treatments, articles, cases\n- Implement responsive design for mobile/tablet/desktop\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
