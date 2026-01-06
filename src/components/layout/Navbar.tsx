@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 
 const navLinks = [
   { path: '/', label: '首頁' },
@@ -15,7 +15,11 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  // Demo: 模擬登入狀態（可切換測試）
+  const isLoggedIn = true;
+
   const isActive = (path: string) => location.pathname === path;
+  const isMemberPage = location.pathname.startsWith('/member');
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
@@ -42,8 +46,32 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            {/* 會員/登入按鈕 */}
+            {isLoggedIn ? (
+              <Link
+                to="/member"
+                className={`flex items-center gap-2 px-4 py-2 rounded-full transition ${
+                  isMemberPage
+                    ? 'bg-secondary text-white'
+                    : 'text-primary hover:bg-gray-100'
+                }`}
+              >
+                <FaUser />
+                <span>會員中心</span>
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                className="flex items-center gap-2 text-primary hover:text-secondary transition"
+              >
+                <FaUser />
+                <span>登入</span>
+              </Link>
+            )}
+
             <Link
-              to="/contact"
+              to="/booking"
               className="bg-primary text-white px-6 py-2 rounded-full hover:bg-accent transition"
             >
               立即預約
@@ -78,8 +106,30 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            {/* 會員/登入連結 */}
+            {isLoggedIn ? (
+              <Link
+                to="/member"
+                onClick={() => setIsOpen(false)}
+                className="block py-2 text-secondary font-medium"
+              >
+                <FaUser className="inline mr-2" />
+                會員中心
+              </Link>
+            ) : (
+              <Link
+                to="/login"
+                onClick={() => setIsOpen(false)}
+                className="block py-2 text-muted"
+              >
+                <FaUser className="inline mr-2" />
+                登入 / 註冊
+              </Link>
+            )}
+
             <Link
-              to="/contact"
+              to="/booking"
               onClick={() => setIsOpen(false)}
               className="block bg-primary text-white text-center px-6 py-3 rounded-full"
             >

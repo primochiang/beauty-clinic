@@ -73,3 +73,127 @@ export interface CarouselSlide {
   link: string;
   image: string;
 }
+
+// ============ 會員模組型別 ============
+
+// 會員型別
+export type LoginMethod = 'phone' | 'email' | 'line' | 'google';
+
+export interface Member {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  avatar?: string;
+  createdAt: string;
+  loginMethod: LoginMethod;
+}
+
+// 註冊步驟
+export type RegisterStep = 'account' | 'verify' | 'info' | 'complete';
+
+// ============ 訂單型別 ============
+
+export type OrderStatus = 'upcoming' | 'completed' | 'cancelled';
+export type PaymentMethod = 'credit_card' | 'transfer';
+export type PaymentStatus = 'paid' | 'pending' | 'refunded' | 'partial_refund';
+
+export interface Order {
+  id: string;
+  memberId: string;
+  serviceId: string;
+  serviceName: string;
+  storeName: string;
+  storeAddress: string;
+  doctorId: string;
+  date: string;
+  timeSlot: string;
+  status: OrderStatus;
+  amount: number;
+  deposit: number;
+  paymentMethod: PaymentMethod;
+  paymentStatus: PaymentStatus;
+  createdAt: string;
+  cancelledAt?: string;
+  cancelReason?: string;
+}
+
+// ============ 預約型別 ============
+
+export type BookingStep = 'service' | 'date' | 'time' | 'payment' | 'complete';
+
+export interface BookableService {
+  id: string;
+  name: string;
+  category: TreatmentCategory;
+  duration: number;
+  price: number;
+  deposit: number;
+  image: string;
+  description: string;
+}
+
+export interface TimeSlot {
+  id: string;
+  time: string;
+  available: boolean;
+}
+
+export interface AvailableDate {
+  date: string;
+  dayOfWeek: number;
+  slots: TimeSlot[];
+}
+
+// ============ 退款型別 ============
+
+export interface RefundRule {
+  daysBeforeService: number;
+  refundPercentage: number;
+  description: string;
+}
+
+export type RefundStatus = 'pending' | 'approved' | 'rejected';
+
+export interface RefundRequest {
+  id: string;
+  orderId: string;
+  reason: string;
+  requestedAt: string;
+  status: RefundStatus;
+  refundAmount: number;
+}
+
+// ============ 意見回饋型別 ============
+
+export interface Feedback {
+  id: string;
+  orderId: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+}
+
+// ============ 客服型別 ============
+
+export type SupportCategory = 'service' | 'refund' | 'account' | 'other';
+export type SupportStatus = 'submitted' | 'processing' | 'closed';
+
+export interface SupportTicket {
+  id: string;
+  memberId: string;
+  orderId?: string;
+  category: SupportCategory;
+  subject: string;
+  description: string;
+  status: SupportStatus;
+  createdAt: string;
+}
+
+export interface SupportMessage {
+  id: string;
+  ticketId: string;
+  content: string;
+  isUser: boolean;
+  timestamp: string;
+}
