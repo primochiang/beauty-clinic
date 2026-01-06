@@ -4,7 +4,7 @@ import { FaSyringe, FaBolt, FaSpa, FaChild, FaMagic, FaCheckCircle } from 'react
 import PageHeader from '../components/sections/PageHeader';
 import CTASection from '../components/sections/CTASection';
 import FilterTabs from '../components/ui/FilterTabs';
-import { treatments, treatmentCategories, getTreatmentsByCategory } from '../data/treatments';
+import { treatmentCategories, getTreatmentsByCategory } from '../data/treatments';
 import { TreatmentCategory } from '../types';
 
 const iconMap: { [key: string]: React.ReactNode } = {

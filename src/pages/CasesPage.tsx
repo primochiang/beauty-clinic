@@ -4,7 +4,7 @@ import { FaUserCheck, FaArrowRight, FaInfoCircle } from 'react-icons/fa';
 import PageHeader from '../components/sections/PageHeader';
 import CTASection from '../components/sections/CTASection';
 import FilterTabs from '../components/ui/FilterTabs';
-import { cases, getCasesByCategory } from '../data/cases';
+import { getCasesByCategory } from '../data/cases';
 import { treatmentCategories, getCategoryInfo } from '../data/treatments';
 import { getDoctorById } from '../data/doctors';
 
